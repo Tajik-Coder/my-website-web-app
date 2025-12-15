@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Калкулятори Telegram</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧮</text></svg>">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Калкулятор омода мешавад...</div>
+    </div>
+    
+    <!-- Main Calculator -->
+    <div id="calculator" style="display: none;">
+        <div class="header">
+            <h1>🧮 Калкулятори Telegram</h1>
+            <p>Натиҷа ба боти Telegram фиристода мешавад</p>
+        </div>
+        
+        <div class="display">
+            <div class="calculation" id="calcDisplay">0</div>
+            <div class="result" id="resultDisplay">0</div>
+        </div>
+        
+        <div class="buttons">
+            <!-- Row 1 -->
+            <button class="btn clear" onclick="clearAll()">C</button>
+            <button class="btn clear" onclick="backspace()">⌫</button>
+            <button class="btn operator" onclick="appendOperator('/')">/</button>
+            <button class="btn operator" onclick="appendOperator('*')">×</button>
+            
+            <!-- Row 2 -->
+            <button class="btn number" onclick="appendNumber('7')">7</button>
+            <button class="btn number" onclick="appendNumber('8')">8</button>
+            <button class="btn number" onclick="appendNumber('9')">9</button>
+            <button class="btn operator" onclick="appendOperator('-')">-</button>
+            
+            <!-- Row 3 -->
+            <button class="btn number" onclick="appendNumber('4')">4</button>
+            <button class="btn number" onclick="appendNumber('5')">5</button>
+            <button class="btn number" onclick="appendNumber('6')">6</button>
+            <button class="btn operator" onclick="appendOperator('+')">+</button>
+            
+            <!-- Row 4 -->
+            <button class="btn number" onclick="appendNumber('1')">1</button>
+            <button class="btn number" onclick="appendNumber('2')">2</button>
+            <button class="btn number" onclick="appendNumber('3')">3</button>
+            <button class="btn equals" onclick="calculate()">=</button>
+            
+            <!-- Row 5 -->
+            <button class="btn number zero" onclick="appendNumber('0')">0</button>
+            <button class="btn number" onclick="appendDecimal()">.</button>
+        </div>
+        
+        <div class="footer">
+            <button class="btn test-btn" onclick="runTests()">Тест</button>
+            <button class="btn info-btn" onclick="showInfo()">Инструкция</button>
+        </div>
+    </div>
+    
+    <!-- Telegram Web App SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="assets/script.js"></script>
+    
+    <!-- Initialize -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide loading after 1 second
+            setTimeout(function() {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('calculator').style.display = 'block';
+                console.log("✅ Калкулятор омода аст!");
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
